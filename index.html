@@ -11,27 +11,21 @@
 </head>
 <body>
     <div class="divcl">
-    <h2>ToDo List</h2>
+    <!-- <h2>ToDo List</h2>
     <input type="text" id = "box" value="ввести свою задачу" onfocus="this.value= '' "/>
     <input type="button" value="добавить" onclick="addItem();"/>
     <div id="list"></div>
     <script>
-        if(localStorage.storedList) {
-            loadList();
-        }
-    </script>
+        
+    </script> -->
 
-        <!-- <div class="logo">ToDo List</div>
+        <div class="logo">ToDo List</div>
         <div class="form">
             <input type="text" id = "box" value="ввести свою задачу" onfocus="this.value= '' "/>
             <input type="button" value="добавить" onclick="addItem();"/>
         </div>
         <div id="list"></div>
-        <script>
-            if(localStorage.storedList) {
-            loadList();
-        }
-        </script> -->
+    </div>   
 </body>
 </html>
 <script>
@@ -54,10 +48,14 @@
     }
 
     function loadList(){
+        console.log(localStorage.storedList)
         document.getElementById("list").innerHTML = localStorage.storedList;
-        for(let i = 0; i > list.children.length; i++) {
+        for(let i = 0; i < list.children.length; i++) {
             list.children[i].onclick = removeItem;
         }
     }
 
+    if(localStorage.storedList) {
+            loadList();
+        }
 </script>
