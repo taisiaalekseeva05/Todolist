@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="divcl">
+    <h2>ToDo List</h2>
+    <input type="text" id = "box" value="ввести свою задачу" onfocus="this.value= '' "/>
+    <input type="button" value="добавить" onclick="addItem();"/>
+    <div id="list"></div>
+    <script>
+        if(localStorage.storedList) {
+            loadList();
+        }
+    </script>
+
+        <!-- <div class="logo">ToDo List</div>
+        <div class="form">
+            <input type="text" id = "box" value="ввести свою задачу" onfocus="this.value= '' "/>
+            <input type="button" value="добавить" onclick="addItem();"/>
+        </div>
+        <div id="list"></div>
+        <script>
+            if(localStorage.storedList) {
+            loadList();
+        }
+        </script> -->
+</body>
+</html>
+<script>
+    function addItem() {
+        let newItem = document.createElement("div");
+        newItem.classList.add("item");
+        newItem.innerHTML = document.getElementById("box").value;
+        newItem.onclick = removeItem;
+        document.getElementById("list").appendChild(newItem);
+        saveList();
+    }
+
+    function removeItem() {
+        document.getElementById("list").removeChild(this);
+        saveList();
+    }
+
+    function saveList() {
+        localStorage.storedList = document.getElementById("list").innerHTML;
+    }
+
+    function loadList(){
+        document.getElementById("list").innerHTML = localStorage.storedList;
+        for(let i = 0; i > list.children.length; i++) {
+            list.children[i].onclick = removeItem;
+        }
+    }
+
+</script>
